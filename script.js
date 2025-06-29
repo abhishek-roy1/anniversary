@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "say yes to heaven say yes to me 🕊️",
       file: "assets/say yes to heaven.mp3",
       image: "assets/img3.jpg"
+    },
+    {
+      name: "ily",
+      file: "assets/creep.mp3",
+      image: "assets/img4.jpg"
     }
   ];
 
