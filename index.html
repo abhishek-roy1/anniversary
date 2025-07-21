@@ -4,62 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Playlist</title>
-
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🌌 Background -->
+  <!-- Background -->
   <div class="background-container">
     <img src="assets/bg.jpg" alt="Background" class="bg-image" />
     <div class="overlay"></div>
   </div>
 
-  <!-- 🎶 Player Wrapper -->
-  <main class="player-wrapper">
-    <!-- Birthday Message -->
-    <h1 class="birthday-msg">Happy Birthday Baby 🎂</h1>
+  <!-- Flex container for player and description -->
+  <main class="main-flex">
+    <!-- Player Section -->
+    <section class="player-wrapper">
+      <h1 class="birthday-msg">Happy Anniversary Baby 🎂</h1>
+      <div class="album-art-container">
+        <img id="albumArt" src="assets/img1.jpg" alt="Album Art" />
+      </div>
+      <p id="trackName" class="track-name">Loading track...</p>
+      <div class="spotify-controls">
+        <button id="prevBtn" class="control-btn" aria-label="Previous Song">⏮️</button>
+        <button id="playPauseBtn" class="play-btn" aria-label="Play/Pause">▶️</button>
+        <button id="nextBtn" class="control-btn" aria-label="Next Song">⏭️</button>
+      </div>
+      <div class="progress-bar">
+        <input type="range" id="progress" value="0" step="1" min="0" />
+      </div>
+      <div class="time-display">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+      </div>
+      <div class="volume-wrapper">
+        <label for="volume">🔊</label>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
+      </div>
+      <audio id="audioPlayer" preload="auto"></audio>
+    </section>
 
-    
-    <!-- 💿 Album Art -->
-    <div class="album-art-container">
-      <img id="albumArt" src="assets/img1.png" alt="Album Art" />
-    </div>
-
-    <!-- 🎵 Track Name -->
-    <p id="trackName" class="track-name">Loading track...</p>
-
-    <!-- Controls -->
-    <div class="spotify-controls">
-      <button id="prevBtn" class="control-btn" aria-label="Previous Song">⏮️</button>
-      <button id="playPauseBtn" class="play-btn" aria-label="Play/Pause">▶️</button>
-      <button id="nextBtn" class="control-btn" aria-label="Next Song">⏭️</button>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="progress-bar">
-      <input type="range" id="progress" value="0" step="1" min="0" />
-    </div>
-
-    <!-- Time Display -->
-    <div class="time-display">
-      <span id="currentTime">0:00</span>
-      <span id="duration">0:00</span>
-    </div>
-
-    <!-- Volume Slider -->
-    <div class="volume-wrapper">
-      <label for="volume">🔊</label>
-      <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
-    </div>
-
-    <!-- Audio -->
-    <audio id="audioPlayer" preload="auto"></audio>
+    <!-- Description Panel (populated by script.js) -->
+    <aside id="descPanel">
+      <div id="trackDesc" class="track-desc">
+        Loading description...
+      </div>
+    </aside>
   </main>
-
-  <!-- Script -->
+  
   <script src="script.js"></script>
 </body>
 </html>
-

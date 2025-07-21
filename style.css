@@ -17,14 +17,12 @@ body {
   top: 0;
   left: 0;
 }
-
 .bg-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(0.45) contrast(1.1);
 }
-
 .overlay {
   position: absolute;
   width: 100%;
@@ -32,42 +30,111 @@ body {
   background: rgba(10, 10, 10, 0.5);
 }
 
-/* ===== MAIN WRAPPER ===== */
-.player-wrapper {
-  position: relative;
-  z-index: 2;
-  min-height: 100vh;
+/* ===== FLEX LAYOUT ===== */
+.main-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  gap: 40px;
   padding: 20px;
+}
+@media (min-width: 900px) {
+  .main-flex {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 60px;
+    justify-content: center;
+  }
+}
+
+/* ===== PLAYER WRAPPER ===== */
+.player-wrapper {
+  background: rgba(255,255,255,0.03);
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(255, 235, 245, 0.10);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+  max-width: 360px;
 }
 
 /* ===== ALBUM ART ===== */
 .album-art-container {
-  width: 300px;
-  height: 300px;
+  width: 275px;
+  height: 275px;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(255, 235, 245, 0.35);
+  margin-bottom: 18px;
+  box-shadow: 0 0 16px rgba(255, 235, 245, 0.30);
 }
-
 .album-art-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* ===== TRACK INFO ===== */
+/* ===== TRACK NAME ===== */
 .track-name {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #ffe0f0;
-  margin-bottom: 25px;
+  margin-bottom: 16px;
   text-align: center;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 8px rgba(255,255,255,0.15);
+}
+
+/* ===== DESCRIPTION PANEL ===== */
+#descPanel {
+  background: rgba(255, 224, 240, 0.06);
+  border-left: 3px solid #ffe0f0;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(255, 220, 240, 0.10);
+  padding: 38px 30px;
+  max-width: 420px;
+  min-width: 240px;
+  color: #fff;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 899px) {
+  #descPanel {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+    border-top: 3px solid #ffe0f0;
+    padding: 28px 14px;
+    box-sizing: border-box;
+  }
+}
+
+.track-desc {
+  font-size: 1.08rem;
+  font-weight: 400;
+  color: #ffeef8;
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.6;
+  word-break: break-word;
+  text-shadow: 0 0 6px rgba(255,255,255,0.08);
+}
+.track-desc p {
+  margin-top: 0;
+  margin-bottom: 1.1em;
+}
+.track-desc b,
+.track-desc strong {
+  color: #ffc1e3;
+}
+.track-desc ul {
+  margin-left: 1.2em;
+  padding-left: 0.7em;
 }
 
 /* ===== CONTROLS ===== */
@@ -76,48 +143,45 @@ body {
   gap: 40px;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
-
 .control-btn, .play-btn {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.09);
   border: 2px solid #ffe6f0;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding: 12px;
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 0 8px rgba(255, 220, 240, 0.2);
+  transition: all 0.22s;
+  box-shadow: 0 0 8px rgba(255, 220, 240, 0.25);
 }
-
 .play-btn {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   padding: 15px;
 }
-
 .control-btn:hover, .play-btn:hover {
   background-color: #fcd6ea;
-  color: #111;
+  color: #171717;
   transform: scale(1.1);
 }
 
 /* ===== PROGRESS BAR ===== */
 .progress-bar {
-  width: 80%;
-  max-width: 400px;
+  width: 84%;
+  max-width: 380px;
 }
-
 #progress {
   width: 100%;
   appearance: none;
-  height: 6px;
+  height: 7px;
   background: #ffe0f0;
   border-radius: 8px;
   outline: none;
   cursor: pointer;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
-
 #progress::-webkit-slider-thumb {
   appearance: none;
   width: 14px;
@@ -126,4 +190,25 @@ body {
   background: #ffb6d5;
   border: 2px solid white;
   box-shadow: 0 0 6px rgba(255, 182, 193, 0.5);
+}
+
+/* ===== TIME & VOLUME ===== */
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  color: #ffd4ef;
+}
+.volume-wrapper {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.volume-wrapper input[type="range"] {
+  width: 92px;
+  accent-color: #ffb6d5;
 }
